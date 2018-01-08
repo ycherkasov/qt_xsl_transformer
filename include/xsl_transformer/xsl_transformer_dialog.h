@@ -7,17 +7,17 @@ class QPushButton;
 
 /// @brief The TranslateDialog class
 /// Converts TS-file into a valid XML and performs a custom XSLT transformation
-class TranslateDialog : public QDialog
+class XslTrassformerDlg : public QDialog
 {
     Q_OBJECT
 
 public:
     
     /// @brief Create controls and handlers
-    explicit TranslateDialog(QWidget *parent = 0);
+    explicit XslTrassformerDlg(QWidget *parent = 0);
 
     /// @brief virtual
-    virtual ~TranslateDialog();
+    virtual ~XslTrassformerDlg();
 
 protected:
 
@@ -35,7 +35,7 @@ protected:
 
 private:
 
-    Q_DISABLE_COPY(TranslateDialog)
+    Q_DISABLE_COPY(XslTrassformerDlg)
 
     /// Layout
     QPushButton* openTsButton_ = nullptr;

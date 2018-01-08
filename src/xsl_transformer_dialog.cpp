@@ -1,4 +1,4 @@
-#include <translate_util/translate_dialog.h>
+#include <xsl_transformer/xsl_transformer_dialog.h>
 
 #include <QLayout>
 #include <QFile>
@@ -10,9 +10,9 @@
 #include <QTextStream>
 #include <QStandardPaths>
 
-const char* TranslateDialog::tempXmlFile = "E36EA2C6-FD7D-4649-8518-5ADBFEB7824E.xml";
+const char* XslTrassformerDlg::tempXmlFile = "E36EA2C6-FD7D-4649-8518-5ADBFEB7824E.xml";
 
-TranslateDialog::TranslateDialog(QWidget *parent /*= 0*/)
+XslTrassformerDlg::XslTrassformerDlg(QWidget *parent /*= 0*/)
 {
     QHBoxLayout* buttons = new QHBoxLayout;
     openTsButton_ = new QPushButton("Open TS");
@@ -22,19 +22,19 @@ TranslateDialog::TranslateDialog(QWidget *parent /*= 0*/)
     buttons->addWidget(openXslButton_);
     buttons->addWidget(transformButton_);
 
-    connect(openTsButton_, &QPushButton::clicked, this, &TranslateDialog::onButtonTsOpenClicked);
-    connect(openXslButton_, &QPushButton::clicked, this, &TranslateDialog::onButtonXslOpenClicked);
-    connect(transformButton_, &QPushButton::clicked, this, &TranslateDialog::onButtonTransformClicked);
+    connect(openTsButton_, &QPushButton::clicked, this, &XslTrassformerDlg::onButtonTsOpenClicked);
+    connect(openXslButton_, &QPushButton::clicked, this, &XslTrassformerDlg::onButtonXslOpenClicked);
+    connect(transformButton_, &QPushButton::clicked, this, &XslTrassformerDlg::onButtonTransformClicked);
     
     this->setLayout(buttons);
 }
 
-TranslateDialog::~TranslateDialog()
+XslTrassformerDlg::~XslTrassformerDlg()
 {
 
 }
 
-void TranslateDialog::onButtonTsOpenClicked()
+void XslTrassformerDlg::onButtonTsOpenClicked()
 {
     QString tsFilePath = QFileDialog::getOpenFileName(
         this, QString("Select files"),
@@ -74,7 +74,7 @@ void TranslateDialog::onButtonTsOpenClicked()
     file.close();
 }
 
-void TranslateDialog::onButtonXslOpenClicked()
+void XslTrassformerDlg::onButtonXslOpenClicked()
 {
     xslPath_ = QFileDialog::getOpenFileName(
         this, QString("Select files"),
@@ -82,7 +82,7 @@ void TranslateDialog::onButtonXslOpenClicked()
         QString("XSL transformation files (*.xsl; *.xslt)"));
 }
 
-void TranslateDialog::onButtonTransformClicked()
+void XslTrassformerDlg::onButtonTransformClicked()
 {
     QString htmlFilePath = QFileDialog::getSaveFileName(nullptr, "Save file",
         QString(),
@@ -90,7 +90,7 @@ void TranslateDialog::onButtonTransformClicked()
     performTransformation(htmlFilePath);
 }
 
-void TranslateDialog::performTransformation(const QString& outputFile)
+void XslTrassformerDlg::performTransformation(const QString& outputFile)
 {
     QFile file(outputFile);
     if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) {

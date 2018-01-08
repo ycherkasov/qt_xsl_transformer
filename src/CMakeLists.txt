@@ -9,7 +9,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
 set(QT_DEPENDENCIES Core Widgets XmlPatterns)
 find_package(Qt5 REQUIRED ${QT_DEPENDENCIES})
 
-file(GLOB SOURCE *.cpp ${CMAKE_CURRENT_SOURCE_DIR}/../include/${TARGET}/*.h)
+file(GLOB SOURCE *.cpp ${CMAKE_CURRENT_SOURCE_DIR}/../include/xsl_transformer/*.h)
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../include/
